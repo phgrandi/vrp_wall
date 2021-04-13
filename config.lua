@@ -1,0 +1,1 @@
+permissao =  "admin.permissao"
