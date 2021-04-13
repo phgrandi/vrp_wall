@@ -35,7 +35,7 @@ end
 function src.getPermissao()
     local source = source
     local user_id = vRP.getUserId(source)
-    if vRP.hasPermission(user_id,permissao) then
+    if vRP.hasPermission(user_id,"admin.permissao") then
         return true
     else
         return false
