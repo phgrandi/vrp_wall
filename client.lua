@@ -12,6 +12,11 @@ local testes = false
 local players = {}
 local name = {}
 local name2 = {}
+
+function tD(n)
+    n = math.ceil(n * 100) / 100
+    return n
+end
 ----------------------------------------------------------------------------------
 -- ARMAS ARRAY
 ----------------------------------------------------------------------------------
@@ -119,6 +124,7 @@ Citizen.CreateThread(
                 	local x2,y2,z2 = table.unpack(GetEntityCoords(GetPlayerPed(id),true))
 
 					local distance = GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId()), pos)
+
 					local id2 = id
 					local healthped = GetPlayerPed(id)
 					local health = GetEntityHealth(healthped)
@@ -131,13 +137,8 @@ Citizen.CreateThread(
 
 					DrawLine(x, y, z, x2, y2, z2, 10, 22, 255, 255)
 
-					if distance <= 600 then
-
-						
-
-						DrawText3D(pos.x, pos.y, pos.z + 1.3, " ~w~["..players[id].."] "..GetPlayerName(id).."\n~w~Health: ~g~"..health.." ~w~|| ~w~Armour: ~b~"..colete.."%\n~w~Weapon: ~g~"..arma_name)
-						
-					end 
+					DrawText3D(pos.x, pos.y, pos.z + 1.2, "~w~["..tD(distance).."m]\n ~w~ID: ~g~"..players[id].." ~w~Steam: ~g~"..GetPlayerName(id).."\n~w~Vida: ~g~"..health.."~w~ (~b~"..colete.."%~w~)\n~w~Arma: ~g~"..arma_name)
+					
 				end
 			end
 	    end
